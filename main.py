@@ -1,4 +1,5 @@
 import os
+import json
 import random
 from typing import Optional
 
@@ -24,12 +25,8 @@ def get_end(type:str):
         return type
 
 def check_type(type:str):
-    if type =='png':
-        return 10
-    if type =='gif':
-        return 31
-    if type == 'jpg':
-        return 30
+    num_group=json.load(open("res/file.json",mode="r",errors="ignore"))
+    return num_group[type]
 
 @app.get("/")
 #async def root():
@@ -41,6 +38,11 @@ async def get_random():
     num=random.randint(1,endnum)
     url=f"{hoster}/getwanli/{num}?types={str(types)}"
     return {"type":types,"url": url}
+
+@app.get("/favicon.ico")
+def get_favicon():
+    return FileResponse("res/favicon.ico",media_type=f"image/icon")
+    
 
 @app.get("/items/{item_id}")
 def read_item(item_id: int, q: Optional[str] = None):
