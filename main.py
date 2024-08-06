@@ -39,7 +39,7 @@ def read_item(item_id: int, q: Optional[str] = None):
 
 @app.get("/getwanli/{filename}")
 async def get_wanli(filename:str,q: Optional[str]=None):
-    filepath= f"res/{q}/{filename}.png"
+    filepath= f"res/{q}/{filename}.{q}"
     if not os.path.exists(filepath):
         return {"code":404,"message":"Not Found!"}
     return FileResponse(filepath,media_type=f"image/{q}")
