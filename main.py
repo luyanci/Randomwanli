@@ -52,7 +52,7 @@ def read_item(item_id: int, q: Optional[str] = None):
 async def get_wanli(filename:str,types:Optional[str]=None):
     typeend=get_end(types)
     filepath= f"res/{types}/{filename}.{types}"
-    print(filepath)
+    #print(filepath)
     if not os.path.exists(filepath):
         return {"code":404,"message":"Not Found!"}
     return FileResponse(filepath,media_type=f"image/{typeend}")
