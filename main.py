@@ -6,7 +6,7 @@ from fastapi import FastAPI
 from fastapi.responses import FileResponse
 
 app = FastAPI()
-hoster = ""
+hoster = "https://randomwanli.zeabur.app"
 
 def random_type():
     types=random.randint(1,2)
@@ -30,7 +30,7 @@ async def get_random():
     endnum=check_type(types)
     print(endnum)
     num=random.randrange(1,endnum,1)
-    url=f"/getwanli-{str(types)}/{num}"
+    url=f"{hoster}/getwanli-{str(types)}/{num}"
     return {"type":types,"url": url}
 
 @app.get("/items/{item_id}")
