@@ -6,7 +6,7 @@ from fastapi import FastAPI
 from fastapi.responses import FileResponse
 
 app = FastAPI()
-hoster = "https://randomwanli.zeabur.app"
+hoster = "https://randomwanli.vercel.app"
 
 def random_type():
     types=random.randint(1,2)
