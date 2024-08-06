@@ -38,7 +38,7 @@ async def get_random():
     types=random_type()
     endnum=check_type(types)
     #print(endnum)
-    num=random.randrange(1,endnum,1)
+    num=random.randint(1,endnum)
     url=f"{hoster}/getwanli/{num}?types={str(types)}"
     return {"type":types,"url": url}
 
