@@ -29,7 +29,7 @@ def check_type(type:str):
     if type =='gif':
         return 31
     if type == 'jpg':
-        return 32
+        return 30
 
 @app.get("/")
 #async def root():
