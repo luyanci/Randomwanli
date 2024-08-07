@@ -29,8 +29,6 @@ def check_type(type:str):
     return num_group[type]
 
 @app.get("/")
-#async def root():
-#    return {"message": "Hello World"}
 async def get_random():
     types=random_type()
     endnum=check_type(types)
@@ -41,18 +39,12 @@ async def get_random():
 
 @app.get("/favicon.ico")
 def get_favicon():
-    return FileResponse("res/favicon.ico",media_type=f"image/icon")
+    return FileResponse("res/favicon.ico",media_type="image/icon")
     
-
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: Optional[str] = None):
-    return {"item_id": item_id, "q": q}
-
 @app.get("/getwanli/{filename}")
 async def get_wanli(filename:str,types:Optional[str]=None):
     typeend=get_end(types)
     filepath= f"res/{types}/{filename}.{types}"
-    #print(filepath)
     if not os.path.exists(filepath):
-        return {"code":404,"message":"Not Found!"}
+        return FileResponse("res/404.png",media_type="image/png")
     return FileResponse(filepath,media_type=f"image/{typeend}")
