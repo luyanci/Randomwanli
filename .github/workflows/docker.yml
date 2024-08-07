@@ -21,5 +21,6 @@ jobs:
             - name: Build & Push Docker Image
               uses: docker/build-push-action@v6
               with:
+                context: .
                 push: true
                 tags: luyancib/randomwanli:latest
