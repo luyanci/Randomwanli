@@ -1,7 +1,6 @@
 import os
 import json
 import random
-from time import sleep
 from dotenv import load_dotenv
 from typing import Optional
 
