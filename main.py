@@ -1,13 +1,20 @@
 import os
 import json
 import random
+from dotenv import load_dotenv
 from typing import Optional
 
 from fastapi import FastAPI
 from fastapi.responses import FileResponse
 
+
 app = FastAPI()
 hoster = "https://randomwanli.zeabur.app"
+load_dotenv("./.env")
+custom=str(os.environ["HOSTER"])
+if len(str(custom)) >= 7:
+    use_custom=True
+    print("Custom enabled!")
 
 def random_type():
     types=random.randint(1,3)
@@ -32,9 +39,11 @@ def check_type(type:str):
 async def get_random():
     types=random_type()
     endnum=check_type(types)
-    #print(endnum)
     num=random.randint(1,endnum)
-    url=f"{hoster}/getwanli/{num}?types={str(types)}"
+    if use_custom is True:
+        url=f"{custom}/getwanli/{num}?types={str(types)}"
+    else:
+        url=f"{hoster}/getwanli/{num}?types={str(types)}"
     return {"type":types,"url": url}
 
 @app.get("/favicon.ico")
