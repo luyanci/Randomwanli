@@ -1,11 +1,12 @@
 import os
 import json
 import random
+from time import sleep
 from dotenv import load_dotenv
 from typing import Optional
 
 from fastapi import FastAPI
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse,RedirectResponse
 
 
 app = FastAPI()
@@ -36,15 +37,20 @@ def check_type(type:str):
     return num_group[type]
 
 @app.get("/")
-async def get_random():
-    types=random_type()
+async def get_random(returns:Optional[str]=None,type:Optional[str]=None):
+    types=type
+    if type is None or type not in ['jpg','png','gif']:
+        types=random_type()
     endnum=check_type(types)
     num=random.randint(1,endnum)
     if use_custom is True:
         url=f"{custom}/getwanli/{num}?types={str(types)}"
     else:
         url=f"{hoster}/getwanli/{num}?types={str(types)}"
-    return {"type":types,"url": url}
+    if returns == '307':
+        return RedirectResponse(url=url)
+    else:
+        return {"type":types,"url": url}
 
 @app.get("/favicon.ico")
 def get_favicon():
