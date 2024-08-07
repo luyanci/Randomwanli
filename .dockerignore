@@ -3,3 +3,4 @@ README.md
 .conda
 .github
 .env.example
+dockerfile
