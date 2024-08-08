@@ -3,6 +3,7 @@ import json
 import random
 from dotenv import load_dotenv
 from typing import Optional
+from loguru import logger
 
 from fastapi import FastAPI,HTTPException
 from fastapi.responses import FileResponse,RedirectResponse
@@ -18,7 +19,7 @@ except:
 finally:
     if use_custom is True and len(str(custom)) >= 7:
         hoster=custom
-        print("Custom enabled!")
+        logger.info("Custom enabled!")
 
 def random_type():
     types=random.randint(1,3)
@@ -43,8 +44,7 @@ async def get_random(returns:Optional[str]=None,type:Optional[str]=None):
     url=f"{hoster}/getwanli/{num}?type={str(types)}"
     if returns == '307':
         return RedirectResponse(url=url)
-    else:
-        return {"type":types,"url": url}
+    return {"type":types,"url": url}
 
 @app.get("/favicon.ico")
 def get_favicon():
@@ -52,6 +52,17 @@ def get_favicon():
 
 @app.get("/getwanli/{filename}")
 async def get_wanli(filename:str,type:Optional[str]=None):
+    failed=False
+    try:
+        #因为图片文件名都是数字，所以试图转int
+        int(filename)
+    except Exception as e:
+        failed=True
+        logger.warning(e)
+    finally:
+        if failed is True:
+            return FileResponse("res/500.png",media_type="image/png")
+        
     if type is None or type not in ['jpg','png','gif']:
         return FileResponse("res/404.png",media_type="image/png")
     typeend=get_end(type)
@@ -63,7 +74,11 @@ async def get_wanli(filename:str,type:Optional[str]=None):
     except:
         raise HTTPException(status_code=403, detail="Not Allowed")
 
+@app.get("/getwanli")
+def jump_to_root():
+    return RedirectResponse(url=f"{hoster}")
 
 if __name__ == "__main__":
+    #程序主函数
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)
