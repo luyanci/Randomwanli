@@ -83,15 +83,15 @@ async def get_wanli(filename:str,type:Optional[str]=None):
     refuse_dict=['$','%','&','#','@','!','*','(',')','[',']','{','}','|','\\','/','?','<','>','=','+','-','_','~','^','`','\n','\r','\t','\b','\f','\v','\a','\b','\n','\r','\t','\b','\f','\v']
     if any(i in filename for i in refuse_dict) or any(i in type for i in refuse_dict):
         #如果参数包含特殊符号，则返回500的图片
-        return FileResponse("res/500.png",media_type="image/png")
+        return RedirectResponse(url=f"{hoster}/500")
     if type is None or type not in ['jpg','png','gif']:
         #如果参数为空或者不在指定类型中，则返回404的图片
-        return FileResponse("res/404.png",media_type="image/png")
+        return RedirectResponse(url=f"{hoster}/404")
     typeend=get_end(type)
     filepath= f"res/{type}/{filename}.{type}"
     try:
         if not os.path.exists(filepath):
-            return FileResponse("res/404.png",media_type="image/png")
+            return RedirectResponse(url=f"{hoster}/404")
         return FileResponse(filepath,media_type=f"image/{typeend}")
     except:
         raise HTTPException(status_code=403, detail="Not Allowed")
@@ -102,6 +102,20 @@ def jump_to_root():
     直接跳转api根
     """
     return RedirectResponse(url=f"{hoster}")
+
+@app.get("/404")
+def get_404():
+    """
+    返回404
+    """
+    return FileResponse("res/404.png",media_type="image/png")
+
+@app.get("/500")
+def get_500():
+    """
+    返回500
+    """
+    return FileResponse("res/500.png",media_type="image/png")
 
 if __name__ == "__main__":
     #程序主函数
