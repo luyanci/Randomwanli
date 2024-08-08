@@ -43,9 +43,9 @@ async def get_random(returns:Optional[str]=None,type:Optional[str]=None):
     endnum=check_type(types)
     num=random.randint(1,endnum)
     if use_custom is True:
-        url=f"{custom}/getwanli/{num}?types={str(types)}"
+        url=f"{custom}/getwanli/{num}?type={str(types)}"
     else:
-        url=f"{hoster}/getwanli/{num}?types={str(types)}"
+        url=f"{hoster}/getwanli/{num}?type={str(types)}"
     if returns == '307':
         return RedirectResponse(url=url)
     else:
@@ -56,9 +56,9 @@ def get_favicon():
     return FileResponse("res/favicon.ico",media_type="image/icon")
     
 @app.get("/getwanli/{filename}")
-async def get_wanli(filename:str,types:Optional[str]=None):
-    typeend=get_end(types)
-    filepath= f"res/{types}/{filename}.{types}"
+async def get_wanli(filename:str,type:Optional[str]=None):
+    typeend=get_end(type)
+    filepath= f"res/{types}/{filename}.{type}"
     if not os.path.exists(filepath):
         return FileResponse("res/404.png",media_type="image/png")
     return FileResponse(filepath,media_type=f"image/{typeend}")
