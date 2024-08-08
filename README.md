@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://randomwanli.zeabur.app/?returns=307" width=200 height=200>
+<img src="https://randomwanli.zeabur.app/?returns=307&type=png" width=200 height=200>
 
 <!--(没想到吧，这里也是随机的)-->
 
