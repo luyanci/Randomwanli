@@ -2,7 +2,7 @@
 
 <img src="https://randomwanli.zeabur.app/?returns=307" width=200 height=200>
 
-~~(没想到吧，这里也是随机的)~~
+<!--(没想到吧，这里也是随机的)-->
 
 # 随机梨梨(RandomWanli)
 
