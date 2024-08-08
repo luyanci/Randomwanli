@@ -12,7 +12,7 @@
 ![FastAPI](https://img.shields.io/badge/Fastapi-005571?style=for-the-badge&logo=fastapi&logoColor=white)
 ![docker](https://img.shields.io/badge/docker-0db7ed?style=for-the-badge&logo=docker&logoColor=white)
 ![github action](https://img.shields.io/badge/github%20action-000000?style=for-the-badge&logo=github-actions&logoColor=blue)
-
+![github action](https://img.shields.io/badge/vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)
 
 </div>
 
@@ -80,4 +80,4 @@
 
 - 使用模板：[Zeabur FastAPI Template](https://zeabur.com/templates/MK8U02) 
     - 作者:[@MichaelYuhe](https://github,com/MichaelYuhe)
-- 404图片：[SAWARATSUKI/KawaiiLogos](http://github.com/SAWARATSUKI/KawaiiLogos) 
+- 404/500图片：[SAWARATSUKI/KawaiiLogos](http://github.com/SAWARATSUKI/KawaiiLogos) 
