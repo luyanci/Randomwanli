@@ -58,7 +58,7 @@ def get_favicon():
 @app.get("/getwanli/{filename}")
 async def get_wanli(filename:str,type:Optional[str]=None):
     typeend=get_end(type)
-    filepath= f"res/{types}/{filename}.{type}"
+    filepath= f"res/{type}/{filename}.{type}"
     if not os.path.exists(filepath):
         return FileResponse("res/404.png",media_type="image/png")
     return FileResponse(filepath,media_type=f"image/{typeend}")
