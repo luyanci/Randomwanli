@@ -4,7 +4,7 @@
 
 ~~(没想到吧，这里也是随机的)~~
 
-# 随机梨梨(RandomLili)
+# 随机梨梨(RandomWanli)
 
 [![Deployed on Zeabur](https://zeabur.com/deployed-on-zeabur-dark.svg)](https://zeabur.com?referralCode=luyanci&utm_source=luyanci)
 
@@ -69,11 +69,11 @@
 ## 源代码使用/开发
 
 ```sh
-~$ git clone https://github.com/luyanci/randomlili
-~$ cd randomlili
+~$ git clone https://github.com/luyanci/randomWanli
+~$ cd randomWanli
 
-~/randomlili$ pip install -r requirements.txt
-~/randomlili$ uvicorn main:app --host 0.0.0.0 --reload
+~/randomWanli$ pip install -r requirements.txt
+~/randomWanli$ uvicorn main:app --host 0.0.0.0 --reload
 ```
 
 ## 致谢
