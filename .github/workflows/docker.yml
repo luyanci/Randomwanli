@@ -24,3 +24,5 @@ jobs:
                 context: .
                 push: true
                 tags: luyancib/randomwanli:latest
+                cache-from: type=registry,ref=luyancib/randomwanli:latest
+                cache-to: type=inline
