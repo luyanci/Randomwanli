@@ -79,5 +79,5 @@
 ## 致谢
 
 - 使用模板：[Zeabur FastAPI Template](https://zeabur.com/templates/MK8U02) 
-    - 作者:[@MichaelYuhe](https://github,com/MichaelYuhe)
+    - 作者:[@MichaelYuhe](https://github.com/MichaelYuhe)
 - 404/500图片：[SAWARATSUKI/KawaiiLogos](http://github.com/SAWARATSUKI/KawaiiLogos) 
