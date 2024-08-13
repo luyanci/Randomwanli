@@ -24,5 +24,6 @@ jobs:
                 context: .
                 push: true
                 tags: luyancib/randomwanli:latest
+                platforms: linux/amd64,linux/arm64,linux/arm/v7
                 cache-from: type=registry,ref=luyancib/randomwanli:latest
                 cache-to: type=inline
